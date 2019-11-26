@@ -4,6 +4,7 @@
 #include <list>
 #include <vector>
 #include <fstream>
+#include <sstream>
 #include "MovingParticle.h"
 
 
@@ -12,8 +13,9 @@ public:
     Level() = delete;
     Level(const Level&) = delete;
     Level(Level&&) = delete;
+    ~Level() = default;
 
-    Level(const std::string& fileName) {
+    explicit Level(const std::string& fileName) {
         std::ifstream inputFile(fileName);
         load(inputFile);
     }
@@ -45,11 +47,35 @@ public:
     }
 
     void save(std::ofstream fout) const {
-        fout >> part >>
+        fout << part << std::endl;
+        fout << goal << std::endl;
+        for (const auto &item : partList) {
+            fout << "Particle" << std::endl;
+            fout << item << std::endl;
+        }
+        for (const auto &wall : walls) {
+            fout << "Wall" << std::endl;
+            fout << wall << std::endl;
+        }
+
     }
 
     void load(std::ifstream& fin) {
-        //TODO
+        fin >> part >> goal;
+        std::string line;
+        while (!fin.eof()) {
+            std::getline(fin, line);
+            if (line == "Particle") {
+                Particle p;
+                fin >> p;
+                partList.push_back(p);
+            }
+            else if (line == "Wall") {
+                Area wall;
+                fin >> wall;
+                walls.push_back(wall);
+            }
+        }
     }
 
 

@@ -37,10 +37,10 @@ public:
     }
 
 private:
-    int x_;
-    int y_;
-    int height_;
-    int width_;
+    int x_ = 0;
+    int y_ = 0;
+    int height_ = 0;
+    int width_ = 0;
 
 };
 

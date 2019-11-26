@@ -7,6 +7,7 @@
 class MovingParticle : public Particle {
 public:
     MovingParticle() = default;
+    ~MovingParticle() = default;
 
     MovingParticle(int x, int y, int charge, double mass, const Point &vel, const Point &acc)
                         : Particle(x, y, charge), mass_(mass), vel_(vel), acc_(acc) {}
@@ -40,9 +41,9 @@ public:
     }
 
 private:
-    double mass_;
-    Point vel_;
-    Point acc_;
+    double mass_{};
+    Point vel_{};
+    Point acc_{};
 };
 
 
