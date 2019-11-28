@@ -10,7 +10,7 @@ class Particle {
 public:
     Particle() = default;
 
-    Particle(int x, int y, int charge) : pos_(x, y), charge_(charge) {}
+    Particle(int x, int y, int charge, double radius = 10) : pos_(x, y), charge_(charge), radius_(radius) {}
 
     [[nodiscard]] const Point &getPos() const {
         return pos_;
@@ -30,6 +30,16 @@ public:
 
     [[nodiscard]] double distance(const Particle &other) const {
         return this->pos_.distance(other.pos_);
+    }
+
+    bool operator==(const Particle &rhs) const {
+        return pos_ == rhs.pos_ &&
+               charge_ == rhs.charge_ &&
+               radius_ == rhs.radius_;
+    }
+
+    bool operator!=(const Particle &rhs) const {
+        return !(rhs == *this);
     }
 
     [[nodiscard]] Point exertForceTo(const Particle &other) const {
@@ -60,7 +70,7 @@ public:
     }
 
 private:
-    Point pos_ = 0;
+    Point pos_;
     int charge_ = 0;
     double radius_ = 10;
 };

@@ -65,37 +65,29 @@ public:
         return force;
     }
 
-    void save(std::ofstream fout) const {
+    void save(std::ofstream &fout) const {
         fout << levelNumber << " " << tryNumber << std::endl;
         fout << part << std::endl;
         fout << goal << std::endl;
-        for (const auto &item : partList) {
-            fout << "Particle" << std::endl;
+        for (const auto &item : partList)
             fout << item << std::endl;
-        }
-        for (const auto &wall : walls) {
-            fout << "Wall" << std::endl;
+        fout << Particle(-1, -1, -1, -1) << std::endl;
+        for (const auto &wall : walls)
             fout << wall << std::endl;
-        }
-
     }
 
     void load(std::ifstream& fin) {
         fin >> levelNumber >> tryNumber;
         fin >> part >> goal;
-        std::string line;
+        Particle p;
+        do {
+            fin >> p;
+            partList.push_back(p);
+        } while (p != Particle(-1, -1, -1, -1));
+        Area wall;
         while (!fin.eof()) {
-            std::getline(fin, line);
-            if (line == "Particle") {
-                Particle p;
-                fin >> p;
-                partList.push_back(p);
-            }
-            else if (line == "Wall") {
-                Area wall;
-                fin >> wall;
-                walls.push_back(wall);
-            }
+            fin >> wall;
+            walls.push_back(wall);
         }
     }
 

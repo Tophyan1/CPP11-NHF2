@@ -21,17 +21,29 @@ struct Point {
     }
 
     Point() = default;
+
     Point(int x, int y) : x(x), y(y) {}
+
     Point(const Point &p) = default;
+
     ~Point() = default;
 
     [[nodiscard]] int distance(const Point &rhs) const {
         int dx = this->x - rhs.x;
         int dy = this->y - rhs.y;
-        return dx*dx + dy*dy;
+        return dx * dx + dy * dy;
     }
 
-    Point& operator=(const Point &rhs) {
+    bool operator==(const Point &rhs) const {
+        return x == rhs.x &&
+               y == rhs.y;
+    }
+
+    bool operator!=(const Point &rhs) const {
+        return !(rhs == *this);
+    }
+
+    Point &operator=(const Point &rhs) {
         if (this != &rhs) {
             this->x = rhs.x;
             this->y = rhs.y;

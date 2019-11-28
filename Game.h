@@ -1,7 +1,6 @@
 #ifndef CHARGE_GAME_H
 #define CHARGE_GAME_H
 
-
 #include <memory>
 #include <utility>
 #include "Player.h"
@@ -14,7 +13,15 @@ public:
 
     ~Game() = default;
 
-    void g() {}
+    void save(std::ofstream &fout) const {
+        fout << *player_ << std::endl;
+        currentLevel_->save(fout);
+    }
+
+    void load(std::ifstream &fin) {
+        fin >> *player_;
+        currentLevel_->load(fin);
+    }
 
 private:
     std::shared_ptr<Player> player_ = nullptr;
