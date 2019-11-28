@@ -11,7 +11,7 @@ public:
     Player() = default;
     ~Player() = default;
 
-    explicit Player(std::string name, int score = 0) :score_(score), name_(std::move(name)) {}
+    explicit Player(std::string name, int score = 0) : score_(score), name_(std::move(name)) {}
 
     [[nodiscard]] int getScore() const {
         return score_;
@@ -26,7 +26,7 @@ public:
     }
 
     friend std::ofstream &operator<<(std::ofstream &os, const Player &player) {
-        os << player.score_ << player.name_;
+        os << player.score_ << " " << player.name_;
         return os;
     }
 

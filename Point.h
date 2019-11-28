@@ -11,7 +11,7 @@ struct Point {
     int y;
 
     friend std::ofstream &operator<<(std::ofstream &os, const Point &point) {
-        os << point.x << point.y;
+        os << point.x << " " << point.y;
         return os;
     }
 
@@ -85,8 +85,5 @@ struct Point {
         return *this;
     }
 };
-
-
-
 
 #endif //CHARGE_POINT_H

@@ -46,7 +46,20 @@ public:
         });
     }
 
+    size_t numberOfParticles() {
+        return partList.size();
+    }
+
+    void addTry() {
+        tryNumber++;
+    }
+
+    int pointsUponWin() {
+        return (10 / tryNumber) * (3000 + (21 - numberOfParticles()) * 500);
+    }
+
     void save(std::ofstream fout) const {
+        fout << levelNumber << " " << tryNumber << std::endl;
         fout << part << std::endl;
         fout << goal << std::endl;
         for (const auto &item : partList) {
@@ -61,6 +74,7 @@ public:
     }
 
     void load(std::ifstream& fin) {
+        fin >> levelNumber >> tryNumber;
         fin >> part >> goal;
         std::string line;
         while (!fin.eof()) {
@@ -78,13 +92,13 @@ public:
         }
     }
 
-
 private:
     MovingParticle part;
     Area goal;
     std::list<Particle> partList;
     std::vector<Area> walls;
+    unsigned int tryNumber = 0;
+    unsigned int levelNumber = 0;
 };
-
 
 #endif //CHARGE_LEVEL_H

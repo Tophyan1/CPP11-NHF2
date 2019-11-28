@@ -3,4 +3,4 @@ project(Charge)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Charge main.cpp Particle.h Point.h MovingParticle.h Area.h Level.h Player.h)
+add_executable(Charge main.cpp Particle.h Point.h MovingParticle.h Area.h Level.h Player.h Game.h)

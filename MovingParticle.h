@@ -31,12 +31,14 @@ public:
     }
 
     friend std::ofstream &operator<<(std::ofstream &os, const MovingParticle &particle) {
-        os << static_cast<const Particle &>(particle) << particle.mass_ << particle.vel_ << particle.acc_;
+        os << static_cast<const Particle &>(particle) << " ";
+        os << particle.vel_ << " ";
+        os << particle.acc_ << " " << particle.mass_;
         return os;
     }
 
     friend std::ifstream &operator>>(std::ifstream &is, MovingParticle &particle) {
-        is >> static_cast<Particle &>(particle) >> particle.mass_ >> particle.vel_ >> particle.acc_;
+        is >> static_cast<Particle &>(particle)  >> particle.vel_ >> particle.acc_ >> particle.mass_;
         return is;
     }
 

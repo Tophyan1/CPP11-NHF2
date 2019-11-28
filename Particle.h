@@ -34,6 +34,8 @@ public:
 
     Point exertForceTo(const Particle &other) {
         double dist = this->distance(other);
+        if (dist == 0)
+            return Point(0, 0);
         double mag = this->charge_ * other.charge_ / (dist * dist);
         double phi = this->pos_.angleTo(other.pos_);
         return Point(mag * cos(phi), mag * sin(phi));
@@ -48,7 +50,7 @@ public:
     }
 
     friend std::ofstream &operator<<(std::ofstream &os, const Particle &particle) {
-        os << particle.pos_ << particle.charge_ << particle.radius_;
+        os << particle.pos_ << " " << particle.charge_ << " " << particle.radius_;
         return os;
     }
 
@@ -58,8 +60,8 @@ public:
     }
 
 private:
-    Point pos_;
-    int charge_;
+    Point pos_ = 0;
+    int charge_ = 0;
     double radius_ = 10;
 };
 
