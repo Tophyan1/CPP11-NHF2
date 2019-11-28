@@ -28,11 +28,11 @@ public:
         return radius_;
     }
 
-    double distance(const Particle &other) {
+    [[nodiscard]] double distance(const Particle &other) const {
         return this->pos_.distance(other.pos_);
     }
 
-    Point exertForceTo(const Particle &other) {
+    [[nodiscard]] Point exertForceTo(const Particle &other) const {
         double dist = this->distance(other);
         if (dist == 0)
             return Point(0, 0);

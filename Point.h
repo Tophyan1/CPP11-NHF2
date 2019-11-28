@@ -7,8 +7,8 @@
 #include <fstream>
 
 struct Point {
-    int x;
-    int y;
+    int x = 0;
+    int y = 0;
 
     friend std::ofstream &operator<<(std::ofstream &os, const Point &point) {
         os << point.x << " " << point.y;

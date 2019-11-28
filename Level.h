@@ -7,7 +7,6 @@
 #include <sstream>
 #include "MovingParticle.h"
 
-
 class Level {
 public:
     Level() = delete;
@@ -46,7 +45,7 @@ public:
         });
     }
 
-    size_t numberOfParticles() {
+    [[nodiscard]] size_t numberOfParticles() const {
         return partList.size();
     }
 
@@ -54,8 +53,16 @@ public:
         tryNumber++;
     }
 
-    int pointsUponWin() {
+    [[nodiscard]] int pointsUponWin() const {
         return (10 / tryNumber) * (3000 + (21 - numberOfParticles()) * 500);
+    }
+
+    [[nodiscard]] Point sumForce() const {
+        Point force;
+        for (const auto &item : partList) {
+            force += item.exertForceTo(part);
+        }
+        return force;
     }
 
     void save(std::ofstream fout) const {
