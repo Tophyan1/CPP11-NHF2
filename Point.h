@@ -3,99 +3,41 @@
 
 
 #include <cmath>
-#include <stdexcept>
-#include <fstream>
+#include "Vector.h"
 
-struct Point {
-    int x = 0;
-    int y = 0;
+class Point {
 
-    friend std::ofstream &operator<<(std::ofstream &os, const Point &point) {
-        os << point.x << " " << point.y;
-        return os;
+public:
+    Point(double x, double y) : x(x), y(y) {}
+
+    [[nodiscard]] double getX() const {
+        return x;
     }
 
-    friend std::ifstream &operator>>(std::ifstream &is, Point &point) {
-        is >> point.x >> point.y;
-        return is;
+    [[nodiscard]] double getY() const {
+        return y;
     }
 
-    Point() = default;
-
-    Point(int x, int y) : x(x), y(y) {}
-
-    Point(const Point &p) = default;
-
-    ~Point() = default;
-
-    [[nodiscard]] int distance(const Point &rhs) const {
-        int dx = this->x - rhs.x;
-        int dy = this->y - rhs.y;
-        return dx * dx + dy * dy;
+    [[nodiscard]] double distanceTo(const Point &p) const {
+        double dx = p.x - this->x;
+        double dy = p.y - this->y;
+        return sqrt(dx * dx + dy * dy);
     }
 
-    bool operator==(const Point &rhs) const {
-        return x == rhs.x &&
-               y == rhs.y;
-    }
-
-    bool operator!=(const Point &rhs) const {
-        return !(rhs == *this);
-    }
-
-    Point &operator=(const Point &rhs) {
-        if (this != &rhs) {
-            this->x = rhs.x;
-            this->y = rhs.y;
-        }
+    Point &moveBy(const Vector &v) {
+        this->x += v.getX();
+        this->y += v.getY();
         return *this;
     }
 
-    Point operator+(const Point &rhs) const {
-        return Point(this->x + rhs.x, this->y + rhs.y);
+    [[nodiscard]] Vector vectorTo(const Point &p) const {
+        return Vector(p.x - this->x, p.y - this->y);
     }
 
-    Point& operator+=(const Point &rhs) {
-        if (this != &rhs)
-            *this = *this + rhs;
-        return *this;
-    }
-
-    Point operator-(const Point &rhs) const {
-        return Point(this->x - rhs.x, this->y - rhs.y);
-    }
-
-    Point& operator-=(const Point &rhs) {
-        if (this != &rhs)
-            *this = *this - rhs;
-        return *this;
-    }
-
-    [[nodiscard]] double angleTo(const Point &rhs) const {
-        return atan2(rhs.y - this->y, rhs.x - this->x);
-    }
-
-    Point operator*(double d) const {
-        return Point(d * this->x, d * this->y);
-    }
-
-    Point &operator*=(double d) {
-        *this = *this * d;
-        return *this;
-    }
-
-    Point operator/(double d) const {
-        if (d == 0)
-            throw std::domain_error("Division by zero!");
-        return Point(this->x / d, this->y / d);
-    }
-
-    Point &operator/=(double d) {
-        if (d == 0)
-            throw std::domain_error("Division by zero!");
-        *this = *this/d;
-        return *this;
-    }
+private:
+    double x;
+    double y;
 };
+
 
 #endif //CHARGE_POINT_H
