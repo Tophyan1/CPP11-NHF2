@@ -35,12 +35,20 @@ public:
         return walls;
     }
 
+    [[nodiscard]] unsigned int getTryNumber() const {
+        return tryNumber;
+    }
+
+    [[nodiscard]] unsigned int getLevelNumber() const {
+        return levelNumber;
+    }
+
     void addParticle(Particle &p) {
         partList.push_back(std::move(p));
     }
 
     void removeParticle(const Particle &p) {
-        partList.remove_if([&p](const Particle& i){
+        partList.remove_if([&p](const Particle &i) {
             return &p == &i;
         });
     }

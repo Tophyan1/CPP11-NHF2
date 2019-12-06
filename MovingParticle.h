@@ -13,10 +13,11 @@ public:
                         : Particle(x, y, charge), mass_(mass), vel_(vel), acc_(acc) {}
 
     void move(Point F, unsigned int t) {
-         this->acc_ = F / this->mass_;
-         this->vel_ += this->acc_ * t / 500;
-         this->setPos(this->getPos() + this->vel_ * t / 500);
+        this->acc_ = F / this->mass_;
+        this->vel_ += this->acc_ * (double) t / 500.0;
+        this->setPos(this->getPos() + this->vel_ * (double) t / 500.0);
     }
+
 
     [[nodiscard]] double getMass() const {
         return mass_;

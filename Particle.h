@@ -46,7 +46,7 @@ public:
         double dist = this->distance(other);
         if (dist == 0)
             return Point(0, 0);
-        double mag = this->charge_ * other.charge_ / (dist * dist);
+        double mag = 600000 * this->charge_ * other.charge_ / (dist * dist);
         double phi = this->pos_.angleTo(other.pos_);
         return Point(mag * cos(phi), mag * sin(phi));
     }
@@ -56,7 +56,7 @@ public:
         int nearestY = std::max(rect.getY(), std::min(this->pos_.y, rect.getY() + rect.getHeight()));
         int dx = this->pos_.x - nearestX;
         int dy = this->pos_.y - nearestY;
-        return (this->radius_ * this->radius_) > dx * dx + dy * dy;
+        return (this->radius_ * this->radius_) >= dx * dx + dy * dy;
     }
 
     friend std::ofstream &operator<<(std::ofstream &os, const Particle &particle) {
