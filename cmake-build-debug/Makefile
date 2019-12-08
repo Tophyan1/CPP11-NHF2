@@ -150,6 +150,33 @@ Game.cpp.s:
 	$(MAKE) -f CMakeFiles/Charge.dir/build.make CMakeFiles/Charge.dir/Game.cpp.s
 .PHONY : Game.cpp.s
 
+GraphicalGame.o: GraphicalGame.cpp.o
+
+.PHONY : GraphicalGame.o
+
+# target to build an object file
+GraphicalGame.cpp.o:
+	$(MAKE) -f CMakeFiles/Charge.dir/build.make CMakeFiles/Charge.dir/GraphicalGame.cpp.o
+.PHONY : GraphicalGame.cpp.o
+
+GraphicalGame.i: GraphicalGame.cpp.i
+
+.PHONY : GraphicalGame.i
+
+# target to preprocess a source file
+GraphicalGame.cpp.i:
+	$(MAKE) -f CMakeFiles/Charge.dir/build.make CMakeFiles/Charge.dir/GraphicalGame.cpp.i
+.PHONY : GraphicalGame.cpp.i
+
+GraphicalGame.s: GraphicalGame.cpp.s
+
+.PHONY : GraphicalGame.s
+
+# target to generate assembly for a file
+GraphicalGame.cpp.s:
+	$(MAKE) -f CMakeFiles/Charge.dir/build.make CMakeFiles/Charge.dir/GraphicalGame.cpp.s
+.PHONY : GraphicalGame.cpp.s
+
 Level.o: Level.cpp.o
 
 .PHONY : Level.o
@@ -216,6 +243,9 @@ help:
 	@echo "... Game.o"
 	@echo "... Game.i"
 	@echo "... Game.s"
+	@echo "... GraphicalGame.o"
+	@echo "... GraphicalGame.i"
+	@echo "... GraphicalGame.s"
 	@echo "... Level.o"
 	@echo "... Level.i"
 	@echo "... Level.s"

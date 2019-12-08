@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/Charge.dir/main.cpp.o CMakeFiles/Charge.dir/Level.cpp.o CMakeFiles/Charge.dir/Game.cpp.o  -o Charge 
+/usr/bin/c++  -g   CMakeFiles/Charge.dir/main.cpp.o CMakeFiles/Charge.dir/Level.cpp.o CMakeFiles/Charge.dir/Game.cpp.o CMakeFiles/Charge.dir/GraphicalGame.cpp.o  -o Charge -lSDL2 -lSDL2_gfx -lSDL2 -lSDL2_ttf -lSDL2 -lSDL2_image -lSDL2 -lSDL2_gfx -lSDL2_ttf -lSDL2_image 

@@ -3,4 +3,15 @@ project(Charge)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Charge main.cpp Point.h Vector.h PointCharge.h Particle.h MovableParticle.h Collidable.h Rectangle.h Wall.h Goal.h Level.cpp Level.h Game.cpp Game.h)
+add_executable(Charge main.cpp Point.h Vector.h PointCharge.h Particle.h MovableParticle.h Collidable.h Rectangle.h Wall.h Goal.h Level.cpp Level.h Game.cpp Game.h GraphicalGame.cpp GraphicalGame.h)
+
+INCLUDE(FindPkgConfig)
+
+PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
+PKG_SEARCH_MODULE(SDL2GFX REQUIRED SDL2_gfx)
+PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf)
+PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image)
+
+INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2GFX_INCLUDE_DIRS} ${SDL2TTF_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS})
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${SDL2_LIBRARIES} ${SDL2GFX_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2IMAGE_LIBRARIES})
+
