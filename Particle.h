@@ -1,78 +1,55 @@
 #ifndef CHARGE_PARTICLE_H
 #define CHARGE_PARTICLE_H
 
-
-#include <fstream>
+#include <iostream>
 #include "Point.h"
-#include "Area.h"
+#include "PointCharge.h"
 
-class Particle {
+class Particle : public PointCharge {
 public:
-    Particle() = default;
+    Particle(const Point &position, double charge) : position(position), charge(charge) {}
 
-    Particle(int x, int y, int charge, double radius = 10) : pos_(x, y), charge_(charge), radius_(radius) {}
-
-    [[nodiscard]] const Point &getPos() const {
-        return pos_;
+    [[nodiscard]] const Point &getPosition() const final {
+        return position;
     }
 
-    void setPos(const Point &pos) {
-        Particle::pos_ = pos;
+    [[nodiscard]] double getCharge() const final {
+        return charge;
     }
 
-    [[nodiscard]] int getCharge() const {
-        return charge_;
+    [[nodiscard]] double getRadius() const final {
+        return radius;
     }
 
-    [[nodiscard]] double getRadius() const {
-        return radius_;
+    [[nodiscard]] Vector calculateForce(const PointCharge &p) const {
+        double magnitude = this->calculateForceMagnitude(p);
+        Vector force = this->position.vectorTo(p.getPosition());
+        force.normalize();
+        force *= magnitude;
+        return force;
     }
 
-    [[nodiscard]] double distance(const Particle &other) const {
-        return this->pos_.distance(other.pos_);
-    }
-
-    bool operator==(const Particle &rhs) const {
-        return pos_ == rhs.pos_ &&
-               charge_ == rhs.charge_ &&
-               radius_ == rhs.radius_;
-    }
-
-    bool operator!=(const Particle &rhs) const {
-        return !(rhs == *this);
-    }
-
-    [[nodiscard]] Point exertForceTo(const Particle &other) const {
-        double dist = this->distance(other);
-        if (dist == 0)
-            return Point(0, 0);
-        double mag = 600000 * this->charge_ * other.charge_ / (dist * dist);
-        double phi = this->pos_.angleTo(other.pos_);
-        return Point(mag * cos(phi), mag * sin(phi));
-    }
-
-    bool collidedWith(Area rect) {
-        int nearestX = std::max(rect.getX(), std::min(this->pos_.x, rect.getX() + rect.getWidth()));
-        int nearestY = std::max(rect.getY(), std::min(this->pos_.y, rect.getY() + rect.getHeight()));
-        int dx = this->pos_.x - nearestX;
-        int dy = this->pos_.y - nearestY;
-        return (this->radius_ * this->radius_) >= dx * dx + dy * dy;
-    }
-
-    friend std::ofstream &operator<<(std::ofstream &os, const Particle &particle) {
-        os << particle.pos_ << " " << particle.charge_ << " " << particle.radius_;
+    friend std::ostream &operator<<(std::ostream &os, const Particle &particle) {
+        os << particle.position << " " << particle.charge << " " << particle.radius;
         return os;
     }
 
-    friend std::ifstream &operator>>(std::ifstream &is, Particle &particle) {
-        is >> particle.pos_ >> particle.charge_ >> particle.radius_;
+    friend std::istream &operator>>(std::istream &is, Particle &particle) {
+        is >> particle.position >> particle.charge >> particle.radius;
         return is;
     }
 
 private:
-    Point pos_;
-    int charge_ = 0;
-    double radius_ = 10;
+
+    Point position;
+    double charge;
+    double radius = 10;
+
+    [[nodiscard]] double calculateForceMagnitude(const PointCharge &p) const {
+        double d = this->position.distanceTo(p.getPosition());
+        return 9e9 * this->charge * p.getCharge() / (d * d);
+    }
 };
+
 
 #endif //CHARGE_PARTICLE_H

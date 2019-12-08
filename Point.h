@@ -3,6 +3,7 @@
 
 
 #include <cmath>
+#include <iostream>
 #include "Vector.h"
 
 class Point {
@@ -24,7 +25,7 @@ public:
         return sqrt(dx * dx + dy * dy);
     }
 
-    Point &moveBy(const Vector &v) {
+    Point &moveByVector(const Vector &v) {
         this->x += v.getX();
         this->y += v.getY();
         return *this;
@@ -32,6 +33,16 @@ public:
 
     [[nodiscard]] Vector vectorTo(const Point &p) const {
         return Vector(p.x - this->x, p.y - this->y);
+    }
+
+    friend std::ostream &operator<<(std::ostream &os, const Point &point) {
+        os << point.x << " " << point.y;
+        return os;
+    }
+
+    friend std::istream &operator>>(std::istream &is, Point &point) {
+        is >> point.x >> point.y;
+        return is;
     }
 
 private:

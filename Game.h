@@ -1,31 +1,52 @@
 #ifndef CHARGE_GAME_H
 #define CHARGE_GAME_H
 
-#include <memory>
-#include <utility>
-#include "Player.h"
+
+#include <string>
 #include "Level.h"
 
 class Game {
 public:
-    Game(std::shared_ptr<Player> player, std::shared_ptr<Level> currentLevel)
-            : player_(std::move(player)), currentLevel_(std::move(currentLevel)) {}
+    Game();
 
-    ~Game() = default;
+    [[nodiscard]] bool isGameOver() const;
 
-    void save(std::ofstream &fout) const {
-        fout << *player_ << std::endl;
-        currentLevel_->save(fout);
-    }
+    [[nodiscard]] bool hasMoreLevels() const;
 
-    void load(std::ifstream &fin) {
-        fin >> *player_;
-        currentLevel_->load(fin);
-    }
+    int getScore();
+
+    void addTry();
+
+    Level getCurrentLevel();
+
+    void nextLevel();
+
+    void addToAllParticles(unsigned int number);
+
+    void step(double deltaTime);
+
+    void save(const std::string &fileName);
+
+    void load(const std::string &fileName);
+
+    void printStatus();
+
+    void addParticle(const Particle &p);
+
+    void lostLevel();
+
+    void playOut();
 
 private:
-    std::shared_ptr<Player> player_ = nullptr;
-    std::shared_ptr<Level> currentLevel_ = nullptr;
+    std::vector<Level> levels;
+    size_t currentLevelIndex;
+    bool gameOver = false;
+    bool levelLost = false;
+    unsigned int tries = 0;
+    unsigned int numberOfAllParticles = 0;
+
+
+    void setUpLevels();
 };
 
 
