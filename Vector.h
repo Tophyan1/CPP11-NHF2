@@ -3,6 +3,7 @@
 
 
 #include <cmath>
+#include <iostream>
 
 class Vector {
 
@@ -36,10 +37,25 @@ public:
         return *this;
     }
 
+    Vector operator/(double d) const {
+        return Vector(this->x / d, this->y / d);
+    }
+
     Vector &normalize() {
-        this->x /= this->length();
-        this->y /= this->length();
+        double l = this->length();
+        this->x /= l;
+        this->y /= l;
         return *this;
+    }
+
+    friend std::ostream &operator<<(std::ostream &os, const Vector &vector) {
+        os << vector.x << " " << vector.y;
+        return os;
+    }
+
+    friend std::istream &operator>>(std::istream &is, Vector &vector) {
+        is >> vector.x >> vector.y;
+        return is;
     }
 
 private:

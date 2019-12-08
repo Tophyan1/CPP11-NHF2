@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Charge"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/tophyan1/CLionProjects/Charge/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/tophyan1/CLionProjects/Charge/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Charge">
+				<Option output="/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Charge" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tophyan1/CLionProjects/Charge/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 Charge"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Charge/fast">
+				<Option output="/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Charge" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tophyan1/CLionProjects/Charge/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 Charge/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/tophyan1/CLionProjects/Charge/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/tophyan1/CLionProjects/Charge/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/Collidable.h">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/Game.cpp">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/Game.h">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/Goal.h">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/Level.cpp">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/Level.h">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/MovableParticle.h">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/Particle.h">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/Point.h">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/PointCharge.h">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/Rectangle.h">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/Vector.h">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/Wall.h">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/main.cpp">
+			<Option target="Charge"/>
+		</Unit>
+		<Unit filename="/home/tophyan1/CLionProjects/Charge/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
